@@ -1,26 +1,28 @@
 # RNA-seq-Preproccesing
-Bash scripts to automatically pre-process RNA-seq data in fastq format into raw count data. Keep in mind that some parameters may need amending, and you need to manually access the quality from the QC output.
+This contains RNAseq preprocessing scripts. Keep in mind that directories and parameters may need amending. The scripts contain job pars for BEAR. 
 
-This has been set up to run primarily on the BEAR server - meeting its requirements. 
 ## Files 
+* `mRNAseq_preprocessing.sh`
+* `coverage.sh`
+* sequential:
+* * `RNAseq_preprocessing.sh`
+* * `remove_rRNA_reads.sh`
+* * `trim.sh`
+* * `map.sh`
+* * `sort_index.sh`
+* * `count.sh`
+* * `coverage.sh`
 
-* RNAseq_preprocessing.sh
-* remove_rRNA_reads.sh
-* trim.sh
-* map.sh
-* sort_index.sh
-* count.sh
-* coverage.sh
+## Running Option 1
+Download, amend and run the `mRNAseq_preprocessing.sh` script which in total will do QC with fastQC, trim with trimmomatic, map with HISAT2 and count raw read with HTSeq.  
+Then Download, amend and run the `coverage.sh` script to generate a Bedgraph summarising the mapped reads at each bp, estimate the average reads across the genome and use the Perl command to normalise read counts by genome-wide average counts. 
 
-## Running 
 
-The "RNAseq_preprocessing.sh" file is the primary router and needs to be placed in a new "workplace" directory where all proccess will be executed. 
-This file runs through all the processes and will stop is an errors occurs. 
-
-For quality control, it is important that you check the outputs and amend the parameters where required. 
-
-Each function within the individual shells have parameters that may need adjusting, please refer the the specific packages' vignette. 
+## Running Option 2: sequential 
+The sequential folder stores scripts to run the processing slightly differently. The `RNAseq_preprocessing.sh` file is the primary router and needs to be placed in a new "workplace" directory where all proccess will be executed. This file runs through all the processes and will stop is an errors occurs. 
 
 ## Output
-
 This will produce the raw count files (non-normalised) for each replicate. As well as summary statistics for different steps. 
+
+## Pull metrics 
+Download, amend and run the `Extract_metrics.sh` script to generate txt files containing information on number of reads in raw/trimmed FASTQ files, and get mapping stats for each sample. 
