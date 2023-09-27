@@ -2,8 +2,9 @@
 This contains RNAseq preprocessing scripts. Keep in mind that directories and parameters may need amending. The scripts contain job pars for BEAR. 
 
 ## Files 
-* `mRNAseq_preprocessing.sh`
-* `coverage.sh`
+* `1_mRNAseq_preprocessing.sh`
+* `2_coverage.sh`
+* `3_extract_metrics.sh`
 * sequential:
 * * `RNAseq_preprocessing.sh`
 * * `remove_rRNA_reads.sh`
@@ -25,4 +26,4 @@ The sequential folder stores scripts to run the processing slightly differently.
 This will produce the raw count files (non-normalised) for each replicate. As well as summary statistics for different steps. 
 
 ## Pull metrics 
-Download, amend and run the `Extract_metrics.sh` script to generate txt files containing information on number of reads in raw/trimmed FASTQ files, and get mapping stats for each sample. 
+Download, amend and run the `3_extract_metrics.sh` script to generate txt files containing information on number of reads in raw/trimmed FASTQ files, and get mapping stats for each sample. 
