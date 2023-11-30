@@ -67,7 +67,7 @@ cut -f1,2 Sl4_Pl_TYLCSV.fa.fai > chromosome_size/chromosome_size_reference.txt #
 ################################################################################
 module load FastQC/0.11.9-Java-11
 
-fastqc --outdir qc/1_raw_read_stats/ 1_raw/*.fastq.gz
+fastqc --outdir ./1_raw/qc/ ./1_raw/*.fastq.gz
 
 ################################################################################
 # 2. Removing rRNA READS using Sortmerna
